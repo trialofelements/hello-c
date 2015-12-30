@@ -12,9 +12,11 @@
  */
 void *jlmemcpy(void *dest, const void *src, unsigned int n)
 {
+	char *bytedest = (char *)dest;
+	char *bytesrc = (char *)src;
 	for (int i = 0; i < n; i++) {
-		*(src + i) = *(dest + i);
-		src[i] = dest[i];
+		*(bytesrc + i) = *(bytedest + i);
+		//bytesrc[i] = bytedest[i];
 	}
 	return dest;
 }
