@@ -14,7 +14,10 @@ int main(int argc, char** argv)
 	printf("%p\n", &arrayofints);
 
 	char buffer[4096];
-	fgets(&buffer[0], 4096, stdin);
-	printf("%s\n", &buffer[0]);
+	if(fgets(&buffer[0], 4096, stdin)!=NULL){
+		printf("%s\n", &buffer[0]);
+	} else {
+		printf("Error\n");
+	}
 	return 0;
 }
