@@ -11,9 +11,10 @@ int main(int argc, char** argv)
 {
 	printf("HELLO\n");
 	int arrayofints[128];
-	printf("%x", &arrayofints);
+	printf("%p\n", &arrayofints);
 
 	char buffer[4096];
-	gets(&buffer);
+	fgets(&buffer, 4096, stdin);
+	printf("%s\n", &buffer[0]);
 	return 0;
 }
