@@ -7,17 +7,35 @@
 
 #include <stdio.h>
 
-int main(int argc, char** argv)
+/*
+ * Does memcpy. But probably less efficiently?
+ */
+void *jlmemcpy(void *dest, const void *src, unsigned int n)
+{
+	for (int i = 0; i < n; i++) {
+		*(src + i) = *(dest + i);
+		src[i] = dest[i];
+	}
+	return dest;
+}
+
+int main(int argc, char **argv)
 {
 	printf("HELLO\n");
 	int arrayofints[128];
 	printf("%p\n", &arrayofints);
 
 	char buffer[4096];
-	if(fgets(&buffer[0], 4096, stdin)!=NULL){
+	char destination[4096];
+	char *result;
+	result = fgets(&buffer[0], 4096, stdin);
+	if(result!=NULL) {
 		printf("%s\n", &buffer[0]);
+		jlmemcpy(destination, buffer, 4096);
+		printf("%s\n", &destination[0]);
 	} else {
 		printf("Error\n");
 	}
+
 	return 0;
 }
