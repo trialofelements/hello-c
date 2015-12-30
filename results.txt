@@ -1,0 +1,8 @@
+HELLO
+0xbfdb86dc
+welcome to standard out redirection
+
+HELLO
+0xbfa18a0c
+standard out redirection 2: the reckoning
+
