@@ -58,7 +58,7 @@ int main(int argc, char **argv)
 		printf("%s\n", &buffer[0]);
 		jlmemcpy((void *)destination, (const void *)buffer, 4096);
 		printf("%s\n", &destination[0]);
-		jlmemmove((void *)&buffer[2], (const void *)buffer, 4093);
+		jlmemmove((void *)&buffer[2], (const void *)buffer, 4094);
 		printf("%s\n", &buffer[0]);
 
 	} else {
@@ -77,6 +77,13 @@ int main(int argc, char **argv)
 	for (int i = 0; i < arraysize; i++) {
 		printf("%d ", arrayofints[i]);
 	}
+	printf("\n");
+	jlmemmove((void *)arrayofints, (const void *)arrayofints[3],
+			  sizeof(int)*(arraysize - 3));
+	for (int i = 0; i < arraysize; i++) {
+		printf("%d ", arrayofints[i]);
+	}
+	printf("\n");
 
 	return 0;
 }
