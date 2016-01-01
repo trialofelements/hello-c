@@ -68,8 +68,15 @@ int main(int argc, char **argv)
 	for (int i = 0; i < arraysize; i++) {
 		arrayofints[i] = i + 1;
 	}
+	for (int i = 0; i < arraysize; i++) {
+		printf("%d ", arrayofints[i]);
+	}
+	printf("\n");
 	jlmemmove((void *)&arrayofints[3], (const void *)arrayofints,
 			  sizeof(int)*(arraysize - 4));
+	for (int i = 0; i < arraysize; i++) {
+		printf("%d ", arrayofints[i]);
+	}
 
 	return 0;
 }
