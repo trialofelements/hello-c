@@ -53,8 +53,10 @@ int main(int argc, char **argv)
 	result = fgets(&buffer[0], 4096, stdin);
 	if(result!=NULL) {
 		printf("%s\n", &buffer[0]);
-		jlmemcpy((void *)&destination, (const void *)buffer, 4096);
+		jlmemcpy((void *)destination, (const void *)buffer, 4096);
 		printf("%s\n", &destination[0]);
+		jlmemmove((void *)&buffer[2], (const void *)buffer, 4096);
+		printf("%s\n", &buffer[0]);
 	} else {
 		printf("Error\n");
 	}
