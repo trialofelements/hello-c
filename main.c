@@ -73,7 +73,7 @@ int main(int argc, char **argv)
 	}
 	printf("\n");
 	jlmemmove((void *)&arrayofints[3], (const void *)arrayofints,
-			  sizeof(int)*(arraysize - 4));
+			  sizeof(int)*(arraysize - 3));
 	for (int i = 0; i < arraysize; i++) {
 		printf("%d ", arrayofints[i]);
 	}
