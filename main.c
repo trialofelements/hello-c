@@ -20,6 +20,27 @@ void *jlmemcpy(void *dest, const void *src, unsigned int n)
 	return dest;
 }
 
+/*
+ * Does memmove. But probably less efficiently?
+ */
+void *jlmemmove(void *dest, const void *src, unsigned int n)
+{
+	char *bytedest = (char *)dest;
+	const char *bytesrc = (const char *)src;
+	if (bytedest > bytesrc && bytedest < (bytesrc + n)) {
+		for (unsigned int i = 0; i < n; i++) {
+			int x = n - 1 - i;
+			bytedest[x] = bytesrc[x];
+		}
+	} else if (bytedest == bytesrc) {
+		//Do nothing because dest == src
+	} else {
+		//Copy left to right (which jlmemcpy does)
+		jlmemcpy(dest, src, n);
+	}
+	return dest;
+}
+
 int main(int argc, char **argv)
 {
 	printf("HELLO\n");
