@@ -72,13 +72,13 @@ int main(int argc, char **argv)
 		printf("%d ", arrayofints[i]);
 	}
 	printf("\n");
-	jlmemmove((void *)&arrayofints[3], (const void *)arrayofints,
+	jlmemmove((void *)&arrayofints[3], (const void *)&arrayofints[0],
 			  sizeof(int)*(arraysize - 3));
 	for (int i = 0; i < arraysize; i++) {
 		printf("%d ", arrayofints[i]);
 	}
 	printf("\n");
-	jlmemmove((void *)arrayofints, (const void *)arrayofints[3],
+	jlmemmove((void *)&arrayofints[0], (const void *)&arrayofints[3],
 			  sizeof(int)*(arraysize - 3));
 	for (int i = 0; i < arraysize; i++) {
 		printf("%d ", arrayofints[i]);
