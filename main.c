@@ -43,23 +43,33 @@ void *jlmemmove(void *dest, const void *src, unsigned int n)
 
 int main(int argc, char **argv)
 {
+	int arraysize = 128;
 	printf("HELLO\n");
-	int arrayofints[128];
+	int arrayofints[arraysize];
 	printf("%p\n", &arrayofints);
 
 	char buffer[4096];
 	char destination[4096];
 	char *result;
+
 	result = fgets(&buffer[0], 4096, stdin);
+
 	if(result!=NULL) {
 		printf("%s\n", &buffer[0]);
 		jlmemcpy((void *)destination, (const void *)buffer, 4096);
 		printf("%s\n", &destination[0]);
-		jlmemmove((void *)&buffer[2], (const void *)buffer, 4096);
+		jlmemmove((void *)&buffer[2], (const void *)buffer, 4093);
 		printf("%s\n", &buffer[0]);
+
 	} else {
 		printf("Error\n");
 	}
+
+	for (int i = 0; i < arraysize; i++) {
+		arrayofints[i] = i + 1;
+	}
+	jlmemmove((void *)&arrayofints[3], (const void *)arrayofints,
+			  sizeof(int)*(arraysize - 4));
 
 	return 0;
 }
